@@ -145,20 +145,6 @@ The developed system successfully achieved:
 
 ---
 
-## Repository Structure
-
-```text
-├── Arduino_Code/
-├── Android_App/
-├── Hardware/
-├── Circuit_Diagrams/
-├── Documentation/
-├── Images/
-├── README.md
-```
-
----
-
 ## Authors
 
 **Bushra Naseer**
