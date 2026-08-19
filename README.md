@@ -150,7 +150,7 @@ The developed system successfully achieved:
 To test the mobile application without setting up the entire development environment, you can download the ready-to-install app binary.
 
 ### 📱 Android App (APK)
-* **Latest Stable Version:** 
+* **Latest Stable Version:** (https://github.com/BushraNaseer/real-time-tracking-and-environment-monitoring-device/releases/tag/v1.0.0)
 * **Direct Download:** 📥 
 
 ### 🛠️ Quick Installation Steps
