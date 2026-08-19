@@ -145,6 +145,21 @@ The developed system successfully achieved:
 
 ---
 
+## 🚀 Download & Installation
+
+To test the mobile application without setting up the entire development environment, you can download the ready-to-install app binary.
+
+### 📱 Android App (APK)
+* **Latest Stable Version:** 
+* **Direct Download:** 📥 
+
+### 🛠️ Quick Installation Steps
+1. Download the **APK file** using your Android smartphone.
+2. Open the downloaded file. If prompted, enable **"Install from Unknown Sources"** in your phone settings.
+3. Follow the on-screen prompts to complete the installation.
+4. Ensure your phone is connected to the internet/hardware local network before launching the app.
+
+---
 ## Authors
 
 **Bushra Naseer**
