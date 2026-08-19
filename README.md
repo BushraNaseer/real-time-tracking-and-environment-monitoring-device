@@ -160,7 +160,39 @@ To test the mobile application without setting up the entire development environ
 4. Ensure your phone is connected to the internet/hardware local network before launching the app.
 
 ---
-## Authors
+
+## 📝 Research & Publications
+
+This project is based on our published research paper. If you use this work or find it helpful, please cite us:
+
+* **Paper Title:** "Real-Time Tracking and Weather Monitoring Device"
+* **Published In:** Proceedings of the Second International Conference on Aeronautical Sciences, Engineering and Technology, ICASET 2025, Springer, Singapore
+* **Official Link:** 🌐 https://doi.org/10.1007/978-981-95-6445-3_8
+
+### 📌 BibTeX Citation
+```bibtex
+@InProceedings{10.1007/978-981-95-6445-3_8,
+author="Batool, Syeda Aemen
+and Naseer, Bushra",
+editor="Khan, Abid Ali
+and Hossain, Mohammad Sayeed
+and Maleque, Md Abdul
+and Fotouhi, Mohammad
+and Steuwer, Axel
+and Kurtulus, Dilek Funda",
+title="Real-Time Tracking and Weather Monitoring Device",
+booktitle="Proceedings of the Second International Conference on Aeronautical Sciences, Engineering and Technology Vol:2",
+year="2026",
+publisher="Springer Nature Singapore",
+address="Singapore",
+pages="85--95",
+isbn="978-981-95-6445-3"
+}
+```
+
+---
+
+## Author of this Repository
 
 **Bushra Naseer**
 
