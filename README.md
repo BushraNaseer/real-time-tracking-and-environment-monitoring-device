@@ -151,7 +151,7 @@ To test the mobile application without setting up the entire development environ
 
 ### 📱 Android App (APK)
 * **Latest Stable Version:** (https://github.com/BushraNaseer/real-time-tracking-and-environment-monitoring-device/releases/tag/v1.0.0)
-* **Direct Download:** 📥 
+* **Direct Download:** 📥 (https://github.com/BushraNaseer/real-time-tracking-and-environment-monitoring-device/releases/download/v1.0.0/app-release.apk)
 
 ### 🛠️ Quick Installation Steps
 1. Download the **APK file** using your Android smartphone.
