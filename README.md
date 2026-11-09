@@ -164,13 +164,13 @@ The Android application (**Hikecast**) provides:
 
 ## Results
 
-| Result | Value | 
+| Result | Value | How measured |
 | --- | --- | --- |
-| Two-way RF communication range | approx. **1 km** | 
-| Network size | **60–70 devices** | 
-| Weather prediction accuracy | **94%** | 
-| Node power consumption | **0.621 W** |
-| Location visualization and SOS broadcast | Working | 
+| Two-way RF communication range | approx. **1.1 km** | Open-field test, line of sight |
+| Network size | **60–70 devices** | Theoretical |
+| Weather prediction accuracy | **94%** | Predictions checked against actual weather |
+| Node power consumption | **0.621 W** | Sum of component currents × 3.3 V |
+| Location visualization and SOS broadcast | Working | Two-node field tests |
 
 ---
 
