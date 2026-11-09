@@ -39,7 +39,7 @@ This project addresses these challenges by creating a self-contained wireless ne
 
 ## System Architecture
 
-![System block diagram](docs/system_block_diagram.jpeg)
+![System block diagram](docs/system_block_diagram.jpg)
 
 Each node:
 
@@ -55,8 +55,7 @@ The communication network operates independently of cellular infrastructure, mak
 
 ## Hardware Components
 
-![Node hardware](docs/node_hardware.jpeg)
-<!-- Export the labelled device photo from slide 21 of the defence deck to docs/node-hardware.png -->
+![Node hardware](docs/node_hardware.jpg)
 
 | Component | Interface | Current | Power |
 | --- | --- | --- | --- |
@@ -66,7 +65,7 @@ The communication network operates independently of cellular infrastructure, mak
 | NRF24L01+PA+LNA RF Transceiver | SPI | 12.6 mA | 0.0445 W |
 | **Total (3.3 V)** | | | **≈ 0.621 W** |
 
-Battery: *to confirm (type and capacity)*.
+Battery 5V Power Bank (Can operate for 72 Hours).
 
 ---
 
