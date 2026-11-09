@@ -39,7 +39,7 @@ This project addresses these challenges by creating a self-contained wireless ne
 
 ## System Architecture
 
-![System block diagram](docs/block-diagram.svg)
+![System block diagram](docs/system_block_diagram.jpeg)
 
 Each node:
 
@@ -55,7 +55,7 @@ The communication network operates independently of cellular infrastructure, mak
 
 ## Hardware Components
 
-![Node hardware](docs/node-hardware.png)
+![Node hardware](docs/node_hardware.jpeg)
 <!-- Export the labelled device photo from slide 21 of the defence deck to docs/node-hardware.png -->
 
 | Component | Interface | Current | Power |
