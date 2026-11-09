@@ -4,7 +4,9 @@
 
 This repository contains the implementation of our Final Year Project (FYP), **Real-Time Tracking and Environment Monitoring Device for Outdoor Activities**, developed as part of the B.S. Electrical Engineering program at the **Institute of Space Technology (IST), Islamabad**.
 
-The project provides a reliable communication and monitoring solution for outdoor environments where **cellular networks are unavailable or unreliable**. A network of portable devices shares real-time GPS locations with one another through RF communication while simultaneously monitoring environmental conditions for local storm prediction. An Android application displays the received location and weather information using Bluetooth Low Energy (BLE).
+The project provides a reliable communication and monitoring solution for outdoor environments where **cellular networks are unavailable or unreliable**. A network of portable devices shares real-time GPS locations with one another through RF communication while simultaneously monitoring environmental conditions for local storm prediction. An Android application (**Hikecast**) displays the received location and weather information using Bluetooth Low Energy (BLE).
+
+**Supervisor:** Dr Adnan Zafar | **Co-Supervisor:** Mr. Ghayas Ud Din
 
 ---
 
@@ -27,17 +29,17 @@ This project addresses these challenges by creating a self-contained wireless ne
 * 📡 RF communication without cellular or Wi-Fi networks
 * 🌦 Local weather prediction using the Zambretti Forecast Algorithm
 * 🌡 Environmental monitoring using temperature and atmospheric pressure
-* 📱 Android application for visualization
+* 📱 Android application for visualization, with offline maps
 * 🔵 Bluetooth Low Energy (BLE) communication with the mobile application
 * 🆘 SOS emergency alert system
-* 🔋 Low-power embedded system design
+* 🔋 Low-power design using a time-division (TDM) transmit/receive cycle
 * 👥 Supports approximately **60–70 devices** in the network
 
 ---
 
 ## System Architecture
 
-The system consists of multiple portable embedded nodes.
+![System block diagram](docs/block-diagram.svg)
 
 Each node:
 
@@ -53,11 +55,48 @@ The communication network operates independently of cellular infrastructure, mak
 
 ## Hardware Components
 
-* ESP32 Development Board
-* NEO-6M GPS Module
-* BMP280 Temperature & Pressure Sensor
-* NRF24L01+PA+LNA RF Transceiver Module
-* Bluetooth Low Energy (BLE)
+![Node hardware](docs/node-hardware.png)
+<!-- Export the labelled device photo from slide 21 of the defence deck to docs/node-hardware.png -->
+
+| Component | Interface | Current | Power |
+| --- | --- | --- | --- |
+| ESP32 Development Board | – | 130 mA | 0.429 W |
+| NEO-6M GPS Module | UART | 45 mA | 0.148 W |
+| BMP280 Temperature & Pressure Sensor | I²C | 2.7 µA | 8.91 µW |
+| NRF24L01+PA+LNA RF Transceiver | SPI | 12.6 mA | 0.0445 W |
+| **Total (3.3 V)** | | | **≈ 0.621 W** |
+
+Battery: *to confirm (type and capacity)*.
+
+---
+
+## TDM Communication Scheme
+
+To save power, each node transmits for **5 s per minute** and listens for **55 s per minute**.
+
+![TDM timing](docs/tdm-timing.svg)
+
+* Two-way communication was tested in synchronous and asynchronous modes.
+* Slot assignment and synchronisation method: *to confirm*.
+* Packet contents (latitude, longitude, altitude, date, time; whether temperature/pressure are included): *to confirm*.
+
+---
+
+## Zambretti Weather Algorithm
+
+1. Sea-level pressure is computed from pressure, temperature and altitude.
+2. The pressure trend (falling, steady, rising) is found from the pressure derivative.
+3. The result is mapped to **Fine**, **Cloudy** or **Stormy**.
+
+The standard Zambretti formulas were kept, but the weather ranges were re-derived from data collected in several local environments.
+
+| Outcome | Z1 | Z2 | Z3 |
+| --- | --- | --- | --- |
+| Fine | [0, 2] | [10, 12] | [8, 10] |
+| Cloudy | [-2, -0.1] | (8, 10] | (6, 8] |
+| Stormy | [-5, -2] | (5, 8] | (3, 6] |
+
+The prediction is written to a BLE characteristic and shown in the app.
 
 ---
 
@@ -85,15 +124,17 @@ The communication network operates independently of cellular infrastructure, mak
 | UART                       | GPS communication                                      |
 | SPI                        | RF module interface                                    |
 
+The ESP32 is the BLE server (3 services, up to 4 characteristics each in practice) and the phone is the client. Temperature and pressure are notified once per minute.
+
 ---
 
 ## Android Application
 
 The Android application (**Hikecast**) provides:
 
-* Live GPS location visualization
+* Live GPS location visualization of both nodes (ID 01, ID 02) on an offline map
+* Live temperature and pressure with graphs
 * Weather prediction display
-* Environmental monitoring
 * SOS emergency notifications
 
 ---
@@ -124,13 +165,24 @@ The Android application (**Hikecast**) provides:
 
 ## Results
 
-The developed system successfully achieved:
+| Result | Value | How it was measured |
+| --- | --- | --- |
+| Two-way RF communication range | approx. **1 km** | *to confirm (test location, line of sight, antenna)* |
+| Network size | **60–70 devices** | *to confirm (tested or theoretical?)* |
+| Weather prediction accuracy | **94%** | *to confirm (number of predictions, reference used)* |
+| Node power consumption | **0.621 W** | Sum of component currents × 3.3 V |
+| Location visualization and SOS broadcast | Working | Two-node field tests, serial logs |
 
-* Two-way RF communication with an approximate range of **1 km**
-* Support for **60–70 interconnected devices**
-* **94% weather prediction accuracy**
-* Real-time location visualization without relying on cellular networks
-* Emergency SOS broadcasting across the network
+---
+
+## Limitations
+
+* The ESP32 supported only **4 BLE characteristics per service** in testing, not the 9 designed.
+* BLE packets were truncated at **22 characters**.
+* Decoding failed with the React Native base-64 library.
+* Standard Zambretti ranges were inaccurate locally and had to be re-tuned.
+* SOS delivery was unreliable due to concurrent tasks; fixed by handling SOS inside the transceiver loop with flags.
+* Hardware testing used two nodes.
 
 ---
 
@@ -157,7 +209,7 @@ To test the mobile application without setting up the entire development environ
 1. Download the **APK file** using your Android smartphone.
 2. Open the downloaded file. If prompted, enable **"Install from Unknown Sources"** in your phone settings.
 3. Follow the on-screen prompts to complete the installation.
-4. Ensure your phone is connected to the internet/hardware local network before launching the app.
+4. Turn on **Bluetooth** and grant the app its Bluetooth and location permissions, then power on the device before launching the app.
 
 ---
 
@@ -192,17 +244,13 @@ isbn="978-981-95-6445-3"
 
 ---
 
-## Author of this Repository
+## Team
 
-**Bushra Naseer**
-
-B.S. Electrical Engineering
-
-Institute of Space Technology (IST), Islamabad
+* **Bushra Naseer** (200401007), B.S. Electrical Engineering, IST Islamabad
+* **Aemen Batool** (200401029), B.S. Electrical Engineering, IST Islamabad
 
 ---
 
 ## License
 
-This repository is intended for educational and research purposes.
-Please provide appropriate attribution if you use any part of this work.
+Released under the **MIT License**. Please provide appropriate attribution if you use any part of this work. Add a `LICENSE` file containing the MIT text to the repository root.
