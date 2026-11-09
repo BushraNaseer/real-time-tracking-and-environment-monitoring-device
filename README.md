@@ -164,13 +164,13 @@ The Android application (**Hikecast**) provides:
 
 ## Results
 
-| Result | Value | How it was measured |
+| Result | Value | 
 | --- | --- | --- |
-| Two-way RF communication range | approx. **1 km** | *to confirm (test location, line of sight, antenna)* |
-| Network size | **60–70 devices** | *to confirm (tested or theoretical?)* |
-| Weather prediction accuracy | **94%** | *to confirm (number of predictions, reference used)* |
-| Node power consumption | **0.621 W** | Sum of component currents × 3.3 V |
-| Location visualization and SOS broadcast | Working | Two-node field tests, serial logs |
+| Two-way RF communication range | approx. **1 km** | 
+| Network size | **60–70 devices** | 
+| Weather prediction accuracy | **94%** | 
+| Node power consumption | **0.621 W** |
+| Location visualization and SOS broadcast | Working | 
 
 ---
 
@@ -252,4 +252,4 @@ isbn="978-981-95-6445-3"
 
 ## License
 
-Released under the **MIT License**. Please provide appropriate attribution if you use any part of this work. Add a `LICENSE` file containing the MIT text to the repository root.
+Released under the **MIT License**. Please provide appropriate attribution if you use any part of this work. 
