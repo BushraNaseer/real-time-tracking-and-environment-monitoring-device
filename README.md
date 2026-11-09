@@ -77,8 +77,8 @@ To save power, each node transmits for **5 s per minute** and listens for **55 s
 ![TDM timing](docs/tdm-timing.svg)
 
 * Two-way communication was tested in synchronous and asynchronous modes.
-* Slot assignment and synchronisation method: *to confirm*.
-* Packet contents (latitude, longitude, altitude, date, time; whether temperature/pressure are included): *to confirm*.
+* Slot assignment and synchronisation method: asynchronous time division multiplexing scheme.
+* Packet contents (latitude, longitude, altitude, date, time).
 
 ---
 
